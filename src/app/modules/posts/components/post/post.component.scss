@@ -1,0 +1,14 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.post__title {
+  border-bottom: solid gray 1px;
+}
+
+.post__footer {
+  align-self: flex-end;
+}
