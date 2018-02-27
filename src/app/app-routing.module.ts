@@ -1,10 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import {IndexComponent} from './components/index/index.component';
+import {IndexComponent} from './website/components/index/index.component';
+import {LoginComponent} from './website/components/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
-  { path: 'admin', loadChildren: 'app/modules/admin/admin.module#AdminModule' },
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
   { path: '**', redirectTo: 'posts' }
 ];
 

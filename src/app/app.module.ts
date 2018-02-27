@@ -4,13 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {PostsModule} from './modules/posts/posts.module';
+import {PostsModule} from './website/posts/posts.module';
 import {Router} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import { HeaderComponent } from './components/header/header.component';
-import { IndexComponent } from './components/index/index.component';
-import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './website/components/header/header.component';
+import { IndexComponent } from './website/components/index/index.component';
+import { LoginComponent } from './website/components/login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {UserService} from './website/services/user.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     PostsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

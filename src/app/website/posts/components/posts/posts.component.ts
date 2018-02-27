@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PostsService} from '../../services/posts.service';
-import {Post} from '../../models/post';
+import {PostsService} from '../../../services/posts.service';
+import {Post} from '../../../models/post';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-posts',
@@ -8,12 +9,11 @@ import {Post} from '../../models/post';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
-  posts: Array<Post>;
+  posts$: Observable<Array<Post>>;
 
   constructor(private postsService: PostsService) { }
 
   ngOnInit() {
-    this.posts = this.postsService.getPosts();
+    this.posts$ = this.postsService.getPosts();
   }
-
 }
