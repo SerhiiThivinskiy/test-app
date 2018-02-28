@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Injectable} from '@angular/core';
 import {delay} from 'rxjs/operators';
-import {RequestOptions} from '../models/request-options';
+import {RequestOptions} from '../../website/models/request-options';
 
 @Injectable()
 export abstract class ApiService {

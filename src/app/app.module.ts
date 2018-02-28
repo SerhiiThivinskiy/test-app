@@ -11,6 +11,8 @@ import { HeaderComponent } from './website/components/header/header.component';
 import { IndexComponent } from './website/components/index/index.component';
 import { LoginComponent } from './website/components/login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AdminGuardService} from './website/services/admin-guard.service';
+import {SharedModule} from './shared/shared.module';
 import {UserService} from './website/services/user.service';
 
 
@@ -25,10 +27,14 @@ import {UserService} from './website/services/user.service';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SharedModule,
     PostsModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    AdminGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

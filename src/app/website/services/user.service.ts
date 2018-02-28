@@ -1,14 +1,28 @@
 import { Injectable } from '@angular/core';
+import {User} from '../models/user';
 
 @Injectable()
 export class UserService {
   private readonly ADMIN_LOGIN = 'admin';
   private readonly ADMIN_PASSWORD = 'admin';
+  private currentUser: User;
 
-  constructor() { }
+  constructor() {
+    console.log('UserService created ');
+  }
 
-  isAdmin(login: string, password: string): boolean {
-    return login === this.ADMIN_LOGIN && password === this.ADMIN_PASSWORD;
+  login(login: string, password: string) {
+    this.currentUser = new User(login, password);
+  }
+
+  logout() {
+    this.currentUser = null;
+  }
+
+  isAdmin(): boolean {
+    return this.currentUser != null &&
+      this.currentUser.login === this.ADMIN_LOGIN &&
+      this.currentUser.password === this.ADMIN_PASSWORD;
   }
 
 }
