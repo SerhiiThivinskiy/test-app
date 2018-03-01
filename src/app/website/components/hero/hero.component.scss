@@ -1,0 +1,17 @@
+.hero__content {
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url('/assets/images/mobile-mainimage-png.png');
+}
+
+.hero {
+  height: 30.2511416%;
+}
+
+@media only screen and (min-device-width: 320px) {
+  .hero__content {
+    background-image: url('/assets/images/mainimage-png.png');
+  }
+}

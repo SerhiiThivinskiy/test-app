@@ -14,6 +14,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AdminGuardService} from './website/services/admin-guard.service';
 import {SharedModule} from './shared/shared.module';
 import {UserService} from './website/services/user.service';
+import { HeroComponent } from './website/components/hero/hero.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {UserService} from './website/services/user.service';
     AppComponent,
     HeaderComponent,
     IndexComponent,
-    LoginComponent
+    LoginComponent,
+    HeroComponent
   ],
   imports: [
     BrowserModule,
