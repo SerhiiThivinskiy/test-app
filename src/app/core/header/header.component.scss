@@ -31,9 +31,6 @@
   align-items: flex-end;
 }
 
-.logo__img {
-}
-
 .phone {
   color: #ffffff;
   font-family: Montserrat, sans-serif;
@@ -61,9 +58,9 @@
   justify-content: space-around;
 }
 
-
 .menu__item {
   color: inherit;
+  font-weight: 500;
   text-decoration: none;
   padding: 10px 22px;
   border-radius: 17px;
@@ -71,24 +68,7 @@
 
 .menu__item:hover {
   color: #ffffff;
-  font-weight: 500;
   background-color: #ff7325;
-}
-
-.header__bottom {
-  position: absolute;
-  bottom: 40px;
-  color: #ffffff;
-  font-family: Montserrat, sans-serif;
-  font-size: 60px;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.header__description--small {
-  color: #ff7325;
-  font-size: 20px;
-  text-transform: capitalize;
 }
 
 .menu--mobile-icon {
@@ -126,22 +106,23 @@
   transform: rotate(-45deg) scaleX(1.2) translate(3px, 0px);
 }
 
-.menu--mobile-checkbox:checked ~ .menu__list {
+.header__bottom {
   position: absolute;
-  top: 98%;
-  left: 0;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
+  bottom: 40px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+}
 
-  font-family: Roboto, sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 48px;
-  letter-spacing: 1.2px;
-  background-color: #4d4e4e;
-  z-index: 1;
+.header__bottom--description-main {
+  color: #ffffff;
+  font-size: 60px;
+  text-transform: uppercase;
+}
+
+.header__bottom--description-small {
+  color: #ff7325;
+  font-size: 20px;
+  text-transform: capitalize;
 }
 
 
@@ -151,13 +132,7 @@
   }
 
   .menu__item {
-    padding: 8px 18px;
-  }
-}
-
-@media only screen and (max-width: 1030px) {
-  .menu {
-    font-size: 12px;
+    padding: 8px 14px;
   }
 }
 
@@ -166,26 +141,20 @@
     font-size: 10px;
   }
 
-  .header__bottom {
+  .header__bottom--description-main {
     font-size: 40px;
   }
 
   .menu__item {
-    padding: 6px 16px;
+    padding: 6px 12px;
   }
 
   .phone {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .header {
     height: 400px;
-  }
-}
-
-@media only screen and (max-width: 835px) {
-  .menu {
-    font-size: 9px;
   }
 }
 
@@ -219,18 +188,52 @@
     border-bottom: 3px solid rgba(255, 255, 255, .3);
   }
 
+  .menu__list li:first-child {
+    padding-top: 75px;
+  }
+
+  .menu__list li:last-child {
+    padding-bottom: 75px;
+  }
+
   .menu__list, .logo__text, .phone__number {
     display: none;
+  }
+
+  .menu__item:hover {
+    color: #ff7325;
+    background-color: inherit;
+  }
+
+  .menu--mobile-checkbox:checked ~ .menu__list {
+    position: absolute;
+    top: 98%;
+    left: 0;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Roboto, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: 1.2px;
+    background-color: #4d4e4e;
+    z-index: 1;
   }
 
   .header__bottom {
     left: 5%;
     bottom: 10px;
     width: 50%;
+  }
+
+  .header__bottom--description-main {
     font-size: 28px;
   }
 
-  .header__description--small {
+  .header__bottom--description-small {
     font-size: 14px;
   }
 }
