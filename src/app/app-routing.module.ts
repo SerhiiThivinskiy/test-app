@@ -8,6 +8,7 @@ const appRoutes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', canLoad: [AdminGuardService], loadChildren: 'app/admin/admin.module#AdminModule' },
+  { path: 'order', loadChildren: 'app/order/order.module#OrderModule' },
   { path: '**', redirectTo: 'posts' }
 ];
 
