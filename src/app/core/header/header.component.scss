@@ -46,9 +46,7 @@
   text-decoration: none;
 }
 
-.phone__icon,
-.menu--mobile-icon-open,
-.menu--mobile-icon-close {
+.phone__icon {
   display: none;
 }
 
@@ -80,7 +78,7 @@
   background-color: #ff7325;
 }
 
-.menu--mobile-checkbox {
+.menu__mobile-checkbox {
   width: 26px;
   height: 26px;
   position: absolute;
@@ -90,6 +88,17 @@
 
   opacity: 0;
   z-index: 1;
+}
+
+.menu__mobile-icon {
+  background-color: transparent;
+  border: none;
+}
+
+.menu__mobile-icon--open,
+.menu__mobile-icon--close {
+  display: none;
+  fill: #ffffff;
 }
 
 .header__bottom {
@@ -162,7 +171,7 @@
     background-color: #4d4e4e;
   }
 
-  .menu--mobile-icon-open, .menu--mobile-checkbox, .phone__icon {
+  .menu__mobile-icon--open, .menu__mobile-checkbox, .phone__icon {
     display: block;
   }
 
@@ -195,15 +204,15 @@
     background-color: inherit;
   }
 
-  .menu--mobile-checkbox:checked ~ .menu--mobile-icon-open {
+  .menu__mobile-checkbox:checked ~ .menu__mobile-icon .menu__mobile-icon--open {
     display: none;
   }
 
-  .menu--mobile-checkbox:checked ~ .menu--mobile-icon-close {
+  .menu__mobile-checkbox:checked ~ .menu__mobile-icon .menu__mobile-icon--close {
     display: block;
   }
 
-  .menu--mobile-checkbox:checked ~ .menu__list {
+  .menu__mobile-checkbox:checked ~ .menu__list {
     position: absolute;
     top: 98%;
     left: 0;

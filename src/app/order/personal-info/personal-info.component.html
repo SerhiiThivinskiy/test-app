@@ -1,1 +1,47 @@
-<h2 class="header">personal information</h2>
+<div class="wrapper">
+
+  <article class="personal-info">
+    <header>
+      <h2 class="header">personal information</h2>
+    </header>
+    <main>
+      <form [formGroup]="form">
+        <ul class="form">
+          <li>
+            <input class="form__input" placeholder="First Name" formControlName="firstName">
+            <input class="form__input" placeholder="Last Name" formControlName="lastName">
+          </li>
+          <li>
+            <select class="form__input" formControlName="country">
+              <option class="form__default-select" ngValue='' selected hidden>Country</option>
+              <option class="form__default-select" *ngFor="let country of countries"
+                      [ngValue]="country">{{country}}
+              </option>
+            </select>
+          </li>
+          <li>
+            <input class="form__input form__input--wide" placeholder="Street Address" formControlName="street">
+          </li>
+          <li>
+            <input class="form__input" placeholder="City" formControlName="city">
+            <input class="form__input form__input--narrow" placeholder="State/Province (Optional)"
+                   formControlName="state">
+            <input class="form__input form__input--narrow" placeholder="Zip/Postal Code" formControlName="zip">
+          </li>
+          <li>
+            <input class="form__input" placeholder="Email Address" formControlName="email">
+            <input class="form__input" placeholder="Phone (Optional)" formControlName="phone">
+          </li>
+
+          <li>
+            <button class="form__button form__button--back" type="button">back to the tour</button>
+            <button class="form__button form__button--continue" type="button" (click)="submitForm()">continue</button>
+          </li>
+        </ul>
+
+      </form>
+
+    </main>
+  </article>
+
+</div>
