@@ -17,18 +17,25 @@
 .form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   list-style-type: none;
 }
 
 .form li {
-  display: flex;
   width: 100%;
+}
+
+.form__line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form__line--breakable {
+  display: flex;
   justify-content: space-between;
 }
 
 .form__input {
-  width: 49%;
   background-color: #f3f3f3;
   font-family: Montserrat, sans-serif;
   font-size: 14px;
@@ -42,9 +49,10 @@
   width: 100%;
 }
 
-.form__input--narrow {
-  width: 23.5%;
+.form__input--medium, .form__line--medium {
+  width: 49%;
 }
+
 
 .form__button {
   border-radius: 25px;
@@ -85,12 +93,14 @@
   color: #cacaca;
 }
 
-.form__default-select {
-  color: #cacaca;
-}
-
 @media only screen and (max-width: 1270px) {
+  .form__line--breakable {
+    flex-direction: column;
+  }
 
+  .form__line--medium {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 960px) {
@@ -117,18 +127,9 @@
   .header {
     font-size: 26px;
   }
+
+  .form__line {
+    flex-direction: column;
+  }
 }
 
-@media only screen and (max-width: 414px) {
-  //.form__input, .form__button {
-  //  width: 100%;
-  //}
-
-  //.form__button--continue {
-  //  margin-top: 15px;
-  //}
-  //
-  //.header {
-  //  font-size: 26px;
-  //}
-}

@@ -8,34 +8,49 @@
       <form [formGroup]="form">
         <ul class="form">
           <li>
-            <input class="form__input" placeholder="First Name" formControlName="firstName">
-            <input class="form__input" placeholder="Last Name" formControlName="lastName">
+            <div class="form__line">
+              <input class="form__input form__input--medium" placeholder="First Name" formControlName="firstName">
+              <input class="form__input form__input--medium" placeholder="Last Name" formControlName="lastName">
+            </div>
           </li>
           <li>
-            <select class="form__input" formControlName="country">
-              <option class="form__default-select" ngValue='' selected hidden>Country</option>
-              <option class="form__default-select" *ngFor="let country of countries"
-                      [ngValue]="country">{{country}}
-              </option>
-            </select>
-          </li>
-          <li>
-            <input class="form__input form__input--wide" placeholder="Street Address" formControlName="street">
-          </li>
-          <li>
-            <input class="form__input" placeholder="City" formControlName="city">
-            <input class="form__input form__input--narrow" placeholder="State/Province (Optional)"
-                   formControlName="state">
-            <input class="form__input form__input--narrow" placeholder="Zip/Postal Code" formControlName="zip">
-          </li>
-          <li>
-            <input class="form__input" placeholder="Email Address" formControlName="email">
-            <input class="form__input" placeholder="Phone (Optional)" formControlName="phone">
+            <div class="form__line">
+              <select class="form__input form__input--medium"  formControlName="country">
+                <option ngValue='' selected hidden>Country</option>
+                <option *ngFor="let country of countries"
+                        [ngValue]="country">{{country}}
+                </option>
+              </select>
+            </div>
           </li>
 
           <li>
-            <button class="form__button form__button--back" type="button">back to the tour</button>
-            <button class="form__button form__button--continue" type="button" (click)="submitForm()">continue</button>
+            <div class="form__line">
+              <input class="form__input form__input--wide" placeholder="Street Address" formControlName="street">
+            </div>
+          </li>
+          <li>
+            <div class="form__line  form__line--breakable">
+              <input class="form__input form__input--medium" placeholder="City" formControlName="city">
+              <div class="form__line form__line--medium">
+                <input class="form__input form__input--medium" placeholder="State/Province (Optional)"
+                       formControlName="state">
+                <input class="form__input form__input--medium" placeholder="Zip/Postal Code" formControlName="zip">
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="form__line">
+              <input class="form__input form__input--medium" placeholder="Email Address" formControlName="email">
+              <input class="form__input form__input--medium" placeholder="Phone (Optional)" formControlName="phone">
+            </div>
+          </li>
+
+          <li>
+            <div class="form__line">
+              <button class="form__button form__button--back" type="button">back to the tour</button>
+              <button class="form__button form__button--continue" type="button" (click)="submitForm()">continue</button>
+            </div>
           </li>
         </ul>
 
