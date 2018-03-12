@@ -17,6 +17,7 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   submitForm() {
+    this.validateForm();
     if (this.form.valid) {
       console.log('OK');
     } else {
@@ -36,6 +37,64 @@ export class PersonalInfoComponent implements OnInit {
       email: ['', Validators.required],
       phone: ['', Validators.required]
     });
+    this.form.valueChanges
+      .subscribe(data => this.checkForErrors());
   }
+
+  checkForErrors() {
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      const control = this.form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        this.formErrors[field] = messages[Object.keys(control.errors)[0]];
+      }
+    }
+  }
+
+  validateForm() {
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      const control = this.form.get(field);
+      if (control && !control.valid) {
+        const messages = this.validationMessages[field];
+        this.formErrors[field] = messages[Object.keys(control.errors)[0]];
+      }
+    }
+  }
+
+  formErrors = {
+    firstName: '',
+    lastName: '',
+    country: '',
+    street: '',
+    city: '',
+    zip: '',
+    email: ''
+  };
+
+  validationMessages = {
+    firstName: {
+      required: 'Name can not be empty'
+    },
+    lastName: {
+      required: 'Last name can not be empty'
+    },
+    country: {
+      required: 'Country can not be empty'
+    },
+    street: {
+      required: 'Street can not be empty'
+    },
+    city: {
+      required: 'City can not be empty'
+    },
+    zip: {
+      required: 'Zip code can not be empty'
+    },
+    email: {
+      required: 'Email can not be empty'
+    }
+  };
 
 }

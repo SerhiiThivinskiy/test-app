@@ -9,8 +9,16 @@
         <ul class="form">
           <li>
             <div class="form__line">
-              <input class="form__input form__input--medium" placeholder="First Name" formControlName="firstName">
-              <input class="form__input form__input--medium" placeholder="Last Name" formControlName="lastName">
+              <div class="input-wrapper input-wrapper--medium">
+                <input class="form__input" placeholder="First Name"
+                       [ngClass]="{ 'form__input--erred': formErrors.firstName }" formControlName="firstName">
+                <div class="error-message" *ngIf="formErrors.firstName">{{formErrors.firstName}}</div>
+              </div>
+              <div class="input-wrapper input-wrapper--medium">
+                <input class="form__input"  placeholder="Last Name"
+                       [ngClass]="{ 'form__input--erred': formErrors.lastName }" formControlName="lastName">
+                <div class="error-message" *ngIf="formErrors.lastName">{{formErrors.lastName}}</div>
+              </div>
             </div>
           </li>
           <li>

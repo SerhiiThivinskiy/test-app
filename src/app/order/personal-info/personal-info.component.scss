@@ -36,6 +36,7 @@
 }
 
 .form__input {
+  width: 100%;
   background-color: #f3f3f3;
   font-family: Montserrat, sans-serif;
   font-size: 14px;
@@ -49,10 +50,17 @@
   width: 100%;
 }
 
-.form__input--medium, .form__line--medium {
+.form__input--medium, .input-wrapper--medium, .form__line--medium {
   width: 49%;
 }
 
+.input-wrapper {
+  position: relative;
+}
+
+.form__input--withValidation {
+  width: 100%;
+}
 
 .form__button {
   border-radius: 25px;
@@ -80,6 +88,19 @@
   border: none;
 }
 
+.form__input--erred {
+  border: 1px solid #d62c1a;
+}
+
+.error-message {
+  position: absolute;
+  font-size: 13px;
+  color: #d62c1a;
+  top: 60px;
+  left: 10px;
+}
+
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #cacaca;
 }
@@ -92,6 +113,11 @@
 :-moz-placeholder { /* Firefox 18- */
   color: #cacaca;
 }
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; }
 
 @media only screen and (max-width: 1270px) {
   .form__line--breakable {
@@ -116,7 +142,10 @@
 }
 
 @media only screen and (max-width: 512px) {
-  .form__input, .form__button {
+  .form__input,
+  .form__input--medium,
+  .input-wrapper--medium,
+  .form__button {
     width: 100%;
   }
 
