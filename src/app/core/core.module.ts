@@ -15,13 +15,13 @@ import {SharedModule} from '../shared/shared.module';
     HeaderComponent,
     IndexComponent,
     LoginComponent,
-    HeroComponent
+    HeroComponent,
   ],
   declarations: [
     HeaderComponent,
     IndexComponent,
     LoginComponent,
-    HeroComponent
+    HeroComponent,
   ]
 })
 export class CoreModule { }

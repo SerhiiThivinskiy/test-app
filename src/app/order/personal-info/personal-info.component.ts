@@ -17,7 +17,6 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   submitForm() {
-    this.validateForm();
     if (this.form.valid) {
       console.log('OK');
     } else {
@@ -32,45 +31,37 @@ export class PersonalInfoComponent implements OnInit {
       country: ['', Validators.required],
       street: ['', Validators.required],
       city: ['', Validators.required],
-      state: ['', Validators.required],
+      state: '',
       zip: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      phone: ''
     });
-    this.form.valueChanges
-      .subscribe(data => this.checkForErrors());
   }
 
-  checkForErrors() {
-    for (const field in this.formErrors) {
-      this.formErrors[field] = '';
-      const control = this.form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        this.formErrors[field] = messages[Object.keys(control.errors)[0]];
-      }
-    }
-  }
-
-  validateForm() {
-    for (const field in this.formErrors) {
-      this.formErrors[field] = '';
-      const control = this.form.get(field);
-      if (control && !control.valid) {
-        const messages = this.validationMessages[field];
-        this.formErrors[field] = messages[Object.keys(control.errors)[0]];
-      }
+  isValid(controlName) {
+    const control = this.form.get(controlName);
+    if (control.touched && !control.valid) {
+      const messages = this.validationMessages[controlName];
+      this.formErrors[controlName] = [];
+      Object.keys(control.errors).forEach(
+        error => this.formErrors[controlName].push(messages[error])
+      );
+      console.log('isValid', controlName + this.formErrors[controlName]);
+      return false;
+    } else {
+      this.formErrors[controlName] = [];
+      return true;
     }
   }
 
   formErrors = {
-    firstName: '',
-    lastName: '',
-    country: '',
-    street: '',
-    city: '',
-    zip: '',
-    email: ''
+    firstName: [],
+    lastName: [],
+    country: [],
+    street: [],
+    city: [],
+    zip: [],
+    email: []
   };
 
   validationMessages = {
@@ -93,7 +84,8 @@ export class PersonalInfoComponent implements OnInit {
       required: 'Zip code can not be empty'
     },
     email: {
-      required: 'Email can not be empty'
+      required: 'Email can not be empty',
+      email: 'Wrong format'
     }
   };
 

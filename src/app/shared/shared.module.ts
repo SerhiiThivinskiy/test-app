@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ValidationMessagesComponent} from './validation-messages/validation-messages.component';
 
 @NgModule({
   imports: [
@@ -13,9 +14,12 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    ValidationMessagesComponent
   ],
   providers: [
   ],
-  declarations: []
+  declarations: [
+    ValidationMessagesComponent
+  ]
 })
 export class SharedModule { }

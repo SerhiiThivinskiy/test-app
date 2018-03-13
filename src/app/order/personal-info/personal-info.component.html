@@ -7,58 +7,70 @@
     <main>
       <form [formGroup]="form">
         <ul class="form">
-          <li>
-            <div class="form__line">
-              <div class="input-wrapper input-wrapper--medium">
-                <input class="form__input" placeholder="First Name"
-                       [ngClass]="{ 'form__input--erred': formErrors.firstName }" formControlName="firstName">
-                <div class="error-message" *ngIf="formErrors.firstName">{{formErrors.firstName}}</div>
-              </div>
-              <div class="input-wrapper input-wrapper--medium">
-                <input class="form__input"  placeholder="Last Name"
-                       [ngClass]="{ 'form__input--erred': formErrors.lastName }" formControlName="lastName">
-                <div class="error-message" *ngIf="formErrors.lastName">{{formErrors.lastName}}</div>
-              </div>
+          <li class="form__line">
+            <div class="input-wrap input-wrap--medium">
+              <input class="form__input" placeholder="First Name"
+                     [ngClass]="{ 'form__input--erred': !isValid('firstName') }" formControlName="firstName">
+              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.firstName"></app-validation-messages>
+            </div>
+            <div class="input-wrap input-wrap--medium">
+              <input class="form__input" placeholder="Last Name"
+                     [ngClass]="{ 'form__input--erred': !isValid('lastName') }" formControlName="lastName">
+              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.lastName"></app-validation-messages>
             </div>
           </li>
-          <li>
-            <div class="form__line">
-              <select class="form__input form__input--medium"  formControlName="country">
+          <li class="form__line">
+            <div class="input-wrap input-wrap--medium">
+              <select class="form__input" [ngClass]="{ 'form__input--erred': !isValid('country') }" formControlName="country">
                 <option ngValue='' selected hidden>Country</option>
                 <option *ngFor="let country of countries"
                         [ngValue]="country">{{country}}
                 </option>
               </select>
+              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.country"></app-validation-messages>
             </div>
           </li>
 
-          <li>
-            <div class="form__line">
-              <input class="form__input form__input--wide" placeholder="Street Address" formControlName="street">
+          <li class="form__line">
+            <div class="input-wrap input-wrap--wide">
+              <input class="form__input" placeholder="Street Address"
+                     [ngClass]="{ 'form__input--erred': !isValid('street') }" formControlName="street">
+              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.street"></app-validation-messages>
             </div>
           </li>
-          <li>
-            <div class="form__line  form__line--breakable">
-              <input class="form__input form__input--medium" placeholder="City" formControlName="city">
-              <div class="form__line form__line--medium">
-                <input class="form__input form__input--medium" placeholder="State/Province (Optional)"
+          <li class="form__line  form__line--breakable">
+            <div class="input-wrap input-wrap--medium">
+              <input class="form__input" placeholder="City"
+                     [ngClass]="{ 'form__input--erred': !isValid('city') }" formControlName="city">
+              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.city"></app-validation-messages>
+            </div>
+
+            <div class="form__line form__line--medium">
+              <div class="input-wrap input-wrap--medium">
+                <input class="form__input" placeholder="State/Province (Optional)"
                        formControlName="state">
-                <input class="form__input form__input--medium" placeholder="Zip/Postal Code" formControlName="zip">
+              </div>
+              <div class="input-wrap input-wrap--medium">
+                <input class="form__input" placeholder="Zip/Postal Code"
+                       [ngClass]="{ 'form__input--erred': !isValid('zip') }" formControlName="zip">
+                <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.zip"></app-validation-messages>
               </div>
             </div>
           </li>
-          <li>
-            <div class="form__line">
-              <input class="form__input form__input--medium" placeholder="Email Address" formControlName="email">
-              <input class="form__input form__input--medium" placeholder="Phone (Optional)" formControlName="phone">
+          <li class="form__line">
+            <div class="input-wrap input-wrap--medium">
+              <input class="form__input" placeholder="Email Address"
+                     [ngClass]="{ 'form__input--erred': !isValid('email') }" formControlName="email">
+              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.email"></app-validation-messages>
+            </div>
+            <div class="input-wrap input-wrap--medium">
+              <input class="form__input" placeholder="Phone (Optional)" formControlName="phone">
             </div>
           </li>
 
-          <li>
-            <div class="form__line">
-              <button class="form__button form__button--back" type="button">back to the tour</button>
-              <button class="form__button form__button--continue" type="button" (click)="submitForm()">continue</button>
-            </div>
+          <li class="form__line">
+            <button class="form__button form__button--back" type="button">back to the tour</button>
+            <button class="form__button form__button--continue" type="button" [disabled]="form.invalid" (click)="submitForm()">continue</button>
           </li>
         </ul>
 

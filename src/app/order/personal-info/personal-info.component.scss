@@ -1,3 +1,9 @@
+:host {
+  --red: #d62c1a;
+  --orange: #ff7325;
+  --dark-orange: #FD4E01;
+}
+
 .wrapper {
   width: 1170px;
   max-width: 80%;
@@ -6,22 +12,16 @@
 
 .header {
   color: #2f2f2f;
-  font-family: Montserrat, sans-serif;
   font-size: 42px;
-  font-weight: 400;
   text-transform: capitalize;
   text-align: center;
-  padding-bottom: 25px;
+  margin: 0 0 25px 0;
 }
 
 .form {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
-}
-
-.form li {
-  width: 100%;
 }
 
 .form__line {
@@ -38,40 +38,45 @@
 .form__input {
   width: 100%;
   background-color: #f3f3f3;
-  font-family: Montserrat, sans-serif;
-  font-size: 14px;
   font-weight: 500;
-  margin-bottom: 22px;
+  margin: 0 0 40px 0;
   padding: 20px;
   border: none;
 }
 
-.form__input--wide {
+.input-wrap--wide {
   width: 100%;
 }
 
-.form__input--medium, .input-wrapper--medium, .form__line--medium {
+.input-wrap--medium, .form__line--medium {
   width: 49%;
 }
 
-.input-wrapper {
+.input-wrap {
   position: relative;
 }
 
-.form__input--withValidation {
-  width: 100%;
+.input-wrap__error-message {
+  position: absolute;
+  color: var(--red);
+  top: 41px;
+  padding: 0 0 0 10px;
 }
 
 .form__button {
   border-radius: 25px;
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
   text-transform: uppercase;
   padding: 13px 35px;
-  margin-top: 30px;
+  margin: 30px 0 0 0;
   letter-spacing: 1px;
 
   min-width: 228px;
+  cursor: pointer;
+}
+
+.form__button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .form__button--back {
@@ -82,24 +87,15 @@
 }
 
 .form__button--continue {
-  background-color: #ff7325;
+  background-color: var(--orange);
   color: #ffffff;
   font-size: 16px;
   border: none;
 }
 
-.form__input--erred {
-  border: 1px solid #d62c1a;
+.form__button--continue:hover:not(:disabled), .form__button--continue:focus {
+  background-color: var(--dark-orange);
 }
-
-.error-message {
-  position: absolute;
-  font-size: 13px;
-  color: #d62c1a;
-  top: 60px;
-  left: 10px;
-}
-
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #cacaca;
@@ -118,6 +114,22 @@ input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 input:focus:-ms-input-placeholder { color:transparent; }
+
+:focus {
+  outline: none;
+}
+
+.form__input--erred {
+  box-shadow: -6px 0px 0px -1px var(--red);
+}
+
+input:focus, select:focus {
+  box-shadow: -6px 0px 0px -1px var(--orange);
+}
+
+button:focus {
+  border: 1px solid var(--dark-orange);
+}
 
 @media only screen and (max-width: 1270px) {
   .form__line--breakable {
@@ -143,14 +155,13 @@ input:focus:-ms-input-placeholder { color:transparent; }
 
 @media only screen and (max-width: 512px) {
   .form__input,
-  .form__input--medium,
-  .input-wrapper--medium,
+  .input-wrap--medium,
   .form__button {
     width: 100%;
   }
 
   .form__button--continue {
-    margin-top: 15px;
+    margin: 15px 0 0 0;
   }
 
   .header {
