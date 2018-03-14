@@ -59,7 +59,7 @@
 .input-wrap__error-message {
   position: absolute;
   color: var(--red);
-  top: 41px;
+  bottom: 25px;
   padding: 0 0 0 10px;
 }
 
@@ -123,12 +123,25 @@ input:focus:-ms-input-placeholder { color:transparent; }
   box-shadow: -6px 0px 0px -1px var(--red);
 }
 
-input:focus, select:focus {
+.ng-valid {
+  box-shadow: -6px 0px 0px -1px #009814;
+}
+
+input:focus,
+select:focus {
   box-shadow: -6px 0px 0px -1px var(--orange);
 }
 
 button:focus {
   border: 1px solid var(--dark-orange);
+}
+
+.form__input--custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml,
+  %3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2727%27%20height%3D%2727%27%20viewBox%3D%270%200%20512%20512%27%20fill%3D%27%23cacac9%27%3E%3Cpath%20d%3D%27M128%20192l128%20128%20128-128z%27%2F%3E%3C%2Fsvg%3E%0A") no-repeat right #f3f3f3;
 }
 
 @media only screen and (max-width: 1270px) {

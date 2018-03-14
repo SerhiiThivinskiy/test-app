@@ -21,7 +21,7 @@
           </li>
           <li class="form__line">
             <div class="input-wrap input-wrap--medium">
-              <select class="form__input" [ngClass]="{ 'form__input--erred': !isValid('country') }" formControlName="country">
+              <select class="form__input form__input--custom-select" [ngClass]="{ 'form__input--erred': !isValid('country') }" formControlName="country">
                 <option ngValue='' selected hidden>Country</option>
                 <option *ngFor="let country of countries"
                         [ngValue]="country">{{country}}
