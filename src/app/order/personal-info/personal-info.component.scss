@@ -40,8 +40,25 @@
   background-color: #f3f3f3;
   font-weight: 500;
   margin: 0 0 40px 0;
-  padding: 20px;
+  padding: 16px;
   border: none;
+  border-left: 4px solid transparent;
+}
+
+.form__input--erred {
+  border-left: 4px solid var(--red);
+  transition: border-left 0.5s;
+}
+
+.ng-valid {
+  border-left: 4px solid #009814;
+  transition: border-left 0.5s;
+}
+
+input:focus,
+select:focus {
+  border-left: 4px solid var(--orange);
+  transition: border-left 0.5s;
 }
 
 .input-wrap--wide {
@@ -119,18 +136,7 @@ input:focus:-ms-input-placeholder { color:transparent; }
   outline: none;
 }
 
-.form__input--erred {
-  box-shadow: -6px 0px 0px -1px var(--red);
-}
 
-.ng-valid {
-  box-shadow: -6px 0px 0px -1px #009814;
-}
-
-input:focus,
-select:focus {
-  box-shadow: -6px 0px 0px -1px var(--orange);
-}
 
 button:focus {
   border: 1px solid var(--dark-orange);
