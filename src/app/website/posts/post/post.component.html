@@ -1,11 +1,22 @@
+
 <article class="post">
-  <header class="post__title">
-    <h1>{{post.title}}</h1>
-  </header>
-  <main>
-    <p>{{post.body}}</p>
+
+    <h3 class="post__title">
+        {{post.title}}
+    </h3>
+
+  <main class="post__content">
+    <div class="wrap wrap--content">
+      <p>{{post.body}}</p>
+    </div>
   </main>
   <footer class="post__footer">
-    Author's Id: {{post.userId}}
+    <div class="wrap wrap--footer">
+      <p>Serhii Tsivinskyi</p>
+      <p>15th March</p>
+    </div>
   </footer>
+
 </article>
+
+

@@ -12,7 +12,7 @@ export abstract class ApiService {
   }
 
   get<T>(url: string): Observable<T> {
-    return this.httpClient.get<T>(this.getUri(url)).pipe(delay(1000));
+    return this.httpClient.get<T>(this.getUri(url));
   }
 
   post(url: string, body: any, options?: RequestOptions) {

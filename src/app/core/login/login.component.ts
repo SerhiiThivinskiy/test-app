@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../website/services/user.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {filter, pairwise} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,14 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      pairwise()
+    ).subscribe((e) => {
+      console.log('router.events ', e);
+    });
+  }
 
   ngOnInit() {
     this.buildForm();

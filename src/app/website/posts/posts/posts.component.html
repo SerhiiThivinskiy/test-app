@@ -1,11 +1,48 @@
+<div class="wrapper">
+
 <article class="posts">
   <ng-container *ngIf="posts$ | async as posts; else loading">
-    <section *ngFor="let post of posts" class="post">
+    <section *ngFor="let post of posts.slice(0, 10)" class="post">
       <app-post [post]="post"></app-post>
     </section>
   </ng-container>
 
-  <ng-template #loading>
+    <ng-template #loading>
     Loading posts...
   </ng-template>
+
+  <nav class="pagination">
+    <ul class="pagination__list">
+      <li class="pagination__item">
+        <a title="first page" href="#">First</a>
+      </li>
+      <li class="pagination__item">
+        <a title="previous page" href="#">Previous</a>
+      </li>
+      <li class="pagination__item">
+        <a title="1" href="#">1</a>
+      </li>
+      <li class="pagination__item">
+        <a title="2" href="#">2</a>
+      </li>
+      <li class="pagination__item">
+        <a title="3" href="#">3</a>
+      </li>
+      <li class="pagination__item">
+        <a title="4" href="#">4</a>
+      </li>
+      <li class="pagination__item">
+        <a title="next page" href="#">Next</a>
+      </li>
+      <li class="pagination__item">
+        <a title="last page" href="#">Last</a>
+      </li>
+    </ul>
+  </nav>
 </article>
+
+<aside class="aside">
+  <p>aside</p>
+</aside>
+
+</div>

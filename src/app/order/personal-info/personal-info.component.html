@@ -1,82 +1,103 @@
 <div class="wrapper">
 
   <article class="personal-info">
-    <header>
-      <h2 class="header">personal information</h2>
-    </header>
-    <main>
-      <form [formGroup]="form">
-        <ul class="form">
-          <li class="form__line">
-            <div class="input-wrap input-wrap--medium">
-              <input class="form__input" placeholder="First Name"
-                     [ngClass]="{ 'form__input--erred': !isValid('firstName') }" formControlName="firstName">
-              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.firstName"></app-validation-messages>
-            </div>
-            <div class="input-wrap input-wrap--medium">
-              <input class="form__input" placeholder="Last Name"
-                     [ngClass]="{ 'form__input--erred': !isValid('lastName') }" formControlName="lastName">
-              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.lastName"></app-validation-messages>
-            </div>
-          </li>
-          <li class="form__line">
-            <div class="input-wrap input-wrap--medium">
-              <select class="form__input form__input--custom-select" [ngClass]="{ 'form__input--erred': !isValid('country') }" formControlName="country">
-                <option ngValue='' selected hidden>Country</option>
-                <option *ngFor="let country of countries"
-                        [ngValue]="country">{{country}}
-                </option>
-              </select>
-              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.country"></app-validation-messages>
-            </div>
-          </li>
+    <h2 class="header">personal information</h2>
+    <form [formGroup]="form">
+      <ul class="form">
+        <li class="form__line">
+          <div class="input-wrap input-wrap--medium">
+            <input class="form__input" placeholder="First Name"
+                   (blur)="validateField('firstName')"
+                   [ngClass]="{ 'form__input--erred': isInvalid('firstName'), 'form__input--valid': isValid('firstName') }"
+                   formControlName="firstName">
+            <app-validation-messages class="input-wrap__error-message"
+                                     [errors]="formErrors.firstName"></app-validation-messages>
+          </div>
+          <div class="input-wrap input-wrap--medium">
+            <input class="form__input" placeholder="Last Name"
+                   (blur)="validateField('lastName')"
+                   [ngClass]="{ 'form__input--erred': isInvalid('lastName'), 'form__input--valid': isValid('lastName') }"
+                   formControlName="lastName">
+            <app-validation-messages class="input-wrap__error-message"
+                                     [errors]="formErrors.lastName"></app-validation-messages>
+          </div>
+        </li>
+        <li class="form__line">
+          <div class="input-wrap input-wrap--medium">
+            <select class="form__input form__input--custom-select"
+                    (blur)="validateField('country')"
+                    [ngClass]="{ 'form__input--erred': isInvalid('country'), 'form__input--valid': isValid('country') }"
+                    formControlName="country">
+              <option ngValue='' selected hidden>Country</option>
+              <option *ngFor="let country of countries"
+                      [ngValue]="country">{{country}}
+              </option>
+            </select>
+            <app-validation-messages class="input-wrap__error-message"
+                                     [errors]="formErrors.country"></app-validation-messages>
+          </div>
+        </li>
 
-          <li class="form__line">
-            <div class="input-wrap input-wrap--wide">
-              <input class="form__input" placeholder="Street Address"
-                     [ngClass]="{ 'form__input--erred': !isValid('street') }" formControlName="street">
-              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.street"></app-validation-messages>
-            </div>
-          </li>
-          <li class="form__line  form__line--breakable">
-            <div class="input-wrap input-wrap--medium">
-              <input class="form__input" placeholder="City"
-                     [ngClass]="{ 'form__input--erred': !isValid('city') }" formControlName="city">
-              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.city"></app-validation-messages>
-            </div>
+        <li class="form__line">
+          <div class="input-wrap input-wrap--wide">
+            <input class="form__input" placeholder="Street Address"
+                   (blur)="validateField('street')"
+                   [ngClass]="{ 'form__input--erred': isInvalid('street'), 'form__input--valid': isValid('street') }"
+                   formControlName="street">
+            <app-validation-messages class="input-wrap__error-message"
+                                     [errors]="formErrors.street"></app-validation-messages>
+          </div>
+        </li>
+        <li class="form__line form__line--breakable">
+          <div class="input-wrap input-wrap--medium">
+            <input class="form__input" placeholder="City"
+                   (blur)="validateField('city')"
+                   [ngClass]="{ 'form__input--erred': isInvalid('city'), 'form__input--valid': isValid('city') }"
+                   formControlName="city">
+            <app-validation-messages class="input-wrap__error-message"
+                                     [errors]="formErrors.city"></app-validation-messages>
+          </div>
 
-            <div class="form__line form__line--medium">
-              <div class="input-wrap input-wrap--medium">
-                <input class="form__input" placeholder="State/Province (Optional)"
-                       formControlName="state">
-              </div>
-              <div class="input-wrap input-wrap--medium">
-                <input class="form__input" placeholder="Zip/Postal Code"
-                       [ngClass]="{ 'form__input--erred': !isValid('zip') }" formControlName="zip">
-                <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.zip"></app-validation-messages>
-              </div>
-            </div>
-          </li>
-          <li class="form__line">
+          <div class="form__line form__line--medium">
             <div class="input-wrap input-wrap--medium">
-              <input class="form__input" placeholder="Email Address"
-                     [ngClass]="{ 'form__input--erred': !isValid('email') }" formControlName="email">
-              <app-validation-messages class="input-wrap__error-message" [errors]="formErrors.email"></app-validation-messages>
+              <input class="form__input" placeholder="State/Province (Optional)"
+                     [ngClass]="{ 'form__input--valid': form.get('state').dirty }"
+                     formControlName="state">
             </div>
             <div class="input-wrap input-wrap--medium">
-              <input class="form__input" placeholder="Phone (Optional)" formControlName="phone">
+              <input class="form__input" placeholder="Zip/Postal Code"
+                     (blur)="validateField('zip')"
+                     [ngClass]="{ 'form__input--erred': isInvalid('zip'), 'form__input--valid': isValid('zip') }"
+                     formControlName="zip">
+              <app-validation-messages class="input-wrap__error-message"
+                                       [errors]="formErrors.zip"></app-validation-messages>
             </div>
-          </li>
+          </div>
+        </li>
+        <li class="form__line">
+          <div class="input-wrap input-wrap--medium">
+            <input class="form__input" placeholder="Email Address"
+                   (blur)="validateField('email')"
+                   [ngClass]="{ 'form__input--erred': isInvalid('email'), 'form__input--valid': isValid('email') }"
+                   formControlName="email">
+            <app-validation-messages class="input-wrap__error-message"
+                                     [errors]="formErrors.email"></app-validation-messages>
+          </div>
+          <div class="input-wrap input-wrap--medium">
+            <input class="form__input" placeholder="Phone (Optional)"
+                   [ngClass]="{ 'form__input--valid': form.get('phone').dirty }"
+                   formControlName="phone">
+          </div>
+        </li>
 
-          <li class="form__line">
-            <button class="form__button form__button--back" type="button">back to the tour</button>
-            <button class="form__button form__button--continue" type="button" [disabled]="form.invalid" (click)="submitForm()">continue</button>
-          </li>
-        </ul>
+        <li class="form__line">
+          <button type="button" class="form__button form__button--back">back to the tour</button>
+          <button type="button" class="form__button form__button--continue"
+             [disabled]="form.invalid" (click)="submitForm()">continue</button>
+        </li>
+      </ul>
+    </form>
 
-      </form>
-
-    </main>
   </article>
 
 </div>

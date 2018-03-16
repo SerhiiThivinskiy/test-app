@@ -14,6 +14,10 @@ export class PersonalInfoComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.form.valueChanges.subscribe(data => {
+      console.log('valueChanges data ' , data);
+      this.checkForErrors();
+    });
   }
 
   submitForm() {
@@ -38,20 +42,32 @@ export class PersonalInfoComponent implements OnInit {
     });
   }
 
-  isValid(controlName) {
+  checkForErrors() {
+    for (const field in this.formErrors) {
+      this.validateField(field);
+    }
+  }
+
+  validateField(controlName) {
     const control = this.form.get(controlName);
+    this.formErrors[controlName] = [];
+
     if (control.touched && !control.valid) {
       const messages = this.validationMessages[controlName];
-      this.formErrors[controlName] = [];
       Object.keys(control.errors).forEach(
         error => this.formErrors[controlName].push(messages[error])
       );
-      console.log('isValid', controlName + this.formErrors[controlName]);
-      return false;
-    } else {
-      this.formErrors[controlName] = [];
-      return true;
     }
+  }
+
+  isValid(controlName) {
+    const control = this.form.get(controlName);
+    return control.touched && !this.formErrors[controlName].length;
+  }
+
+  isInvalid(controlName) {
+    const control = this.form.get(controlName);
+    return control.touched && this.formErrors[controlName].length;
   }
 
   formErrors = {
