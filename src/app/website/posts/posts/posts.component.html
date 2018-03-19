@@ -2,7 +2,7 @@
 
 <article class="posts">
   <ng-container *ngIf="posts$ | async as posts; else loading">
-    <section *ngFor="let post of posts.slice(0, 10)" class="post">
+    <section *ngFor="let post of posts.slice(0, 9)" class="post" tabindex="0">
       <app-post [post]="post"></app-post>
     </section>
   </ng-container>

@@ -33,16 +33,23 @@
 
 .post__footer {
   //align-self: flex-end;
-  background-color: #ff7325;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
+  //background-color: #ff7325;
+  //color: #ffffff;
+
+  border-top: 1px solid #ff7325;
   padding: 10px 15px 10px 15px;
+}
+
+.footer__description {
+  color: #ff7325;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .wrap--footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 @media only screen and (max-width: 700px) {
