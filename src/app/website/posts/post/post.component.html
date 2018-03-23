@@ -1,25 +1,19 @@
-
-<article class="post">
-
+<div class="wrap">
+  <article class="post">
     <h3 class="post__title">
-        {{post.title}}
+      <a href="#" title="{{post.title}}" class="title__link">{{post.title}}</a>
     </h3>
 
-  <main class="post__content">
-    <div class="wrap">
+    <main class="post__content">
       <p>{{post.body}}</p>
-    </div>
-  </main>
-  <footer class="post__footer">
-    <div class="wrap wrap--footer">
-      <img class="footer__image" width="54px" height="24px" src="/assets/images/layer-14.png" alt="logo">
+    </main>
+
+    <footer class="post__footer">
+      <img class="footer__image" width="54" height="24" src="/assets/images/layer-14.png" alt="logo">
       <div class="footer__description">
-        <p>Serhii Tsivinskyi</p>
+        <a href="#" title="Serhii Tsivinskyi" class="description__link">Serhii Tsivinskyi</a>
         <p>15th March</p>
       </div>
-    </div>
-  </footer>
-
-</article>
-
-
+    </footer>
+  </article>
+</div>

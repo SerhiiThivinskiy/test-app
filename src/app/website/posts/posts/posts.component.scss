@@ -1,51 +1,39 @@
-:focus {
-  outline: none;
-}
-
-.wrapper {
+.wrap {
   display: flex;
-  //flex-direction: column;
+  margin: auto;
+  max-width: 1170px;
+  width: 90%;
 }
 
 .aside {
   background-color: #f3f3f3;
-  //flex-grow: 2;
   width: 20%;
+  max-height: 1000px;
 }
 
 .aside__text {
+  color: #ffffff;
   font-size: 100px;
   font-weight: 600;
-  text-align: center;
-  color: #ffffff;
-  text-shadow: 1px 1px 1px #FF7733;
   line-height: 2;
+  text-align: center;
+  text-shadow: 1px 1px 1px #FF7733;
 }
 
 .posts {
-  //align-items: stretch;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 20px 50px 20px 50px;
   width: 80%;
 }
 
-
 .post {
-  box-shadow: 0 4px 6px 0 #4d4e4e;
   margin: 0 0 20px 0;
-  width: 30%;
-  max-width: 900px;
-}
-
-.post:focus {
-  box-shadow: 0 4px 6px 0 #ff7325;
+  width: 100%;
 }
 
 .pagination {
-  width: 100%;
-  margin: 50px 0 0 0;
+  margin: 50px 0 50px 0;
 }
 
 .pagination__list {
@@ -55,35 +43,31 @@
 }
 
 .pagination__item a {
-  border-bottom: 1px solid transparent;
   color: #444444;
   padding: 8px 16px;
   text-decoration: none;
-  transition: border-bottom .3s;
+}
+
+.pagination__item a::after {
+  background-color: #FF7733;
+  content: '';
+  display: block;
+  height: 2px;
+  transform: scaleX(0);
+  transition: all 0.5s ease-out;
+}
+
+.pagination__item a:hover::after,
+.pagination__item a:focus::after {
+  transform: scaleX(1);
 }
 
 .pagination__item a:hover,
 .pagination__item a:focus {
-  border-bottom: 1px solid #FF7733;
   color: #FF7733;
 }
 
-@media only screen and (max-width: 1500px) {
-
-  .post {
-    width: 45%;
-  }
-}
-
-
 @media only screen and (max-width: 900px) {
-
-  .post {
-    width: 100%;
-  }
-  //.pagination {
-  //}
-  //
   .posts {
     width: 100%;
   }
@@ -92,11 +76,3 @@
     display: none;
   }
 }
-//
-//@media only screen and (max-width: 400px) {
-//  .post {
-//    width: 100%;
-//  }
-//}
-
-
